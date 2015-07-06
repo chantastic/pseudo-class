@@ -7,9 +7,8 @@ describe("pseudo-class", function () {
   describe("firstChild", function () {
     it("is truthy if the first argument is 0", function () {
       expect(ps.firstChild(0)).toBeTruthy();
-    });
 
-    it("is falsy for any other value", function () {
+      // false expectations
       expect(ps.firstChild(null)).toBeFalsy();
       expect(ps.firstChild(undefined)).toBeFalsy();
       expect(ps.firstChild(false)).toBeFalsy();
@@ -23,14 +22,12 @@ describe("pseudo-class", function () {
       expect(ps.lastChild(0, [1])).toBeTruthy();
       expect(ps.lastChild(1, [1, 2])).toBeTruthy();
       expect(ps.lastChild(2, [1, 2, 3])).toBeTruthy();
-    });
 
-    it("is truthy if the first argument is equal to the second arguments length - 1", function () {
+      // false expectations
       expect(ps.lastChild(0, [1, 2, 3])).toBeFalsy();
       expect(ps.lastChild(1, [1, 2, 3])).toBeFalsy();
       expect(ps.lastChild(-1, [1, 2, 3])).toBeFalsy();
       expect(ps.lastChild("ham", [1, 2, 3])).toBeFalsy();
-
       expect(ps.lastChild(0, [])).toBeFalsy();
     });
   });
