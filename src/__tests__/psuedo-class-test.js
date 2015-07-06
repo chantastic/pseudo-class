@@ -34,4 +34,17 @@ describe("pseudo-class", function () {
       expect(ps.lastChild(0, [])).toBeFalsy();
     });
   });
+
+  describe("onlyChild", function () {
+    it("is truthy when 1 is equal to the first arguments length", function () {
+      expect(ps.onlyChild([1])).toBeTruthy();
+      expect(ps.onlyChild(["salmon"])).toBeTruthy();
+      expect(ps.onlyChild([{ name: "Michael" }])).toBeTruthy();
+
+      // false expectations
+      expect(ps.onlyChild([])).toBeFalsy();
+      expect(ps.onlyChild(["salmon", "trout"])).toBeFalsy();
+      expect(ps.onlyChild([{ name: "Michael" }, { name: "Nellie" }])).toBeFalsy();
+    });
+  });
 });
