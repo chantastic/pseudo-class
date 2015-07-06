@@ -44,4 +44,19 @@ describe("pseudo-class", function () {
       expect(ps.onlyChild([{ name: "Michael" }, { name: "Nellie" }])).toBeFalsy();
     });
   });
+
+  describe("even", function () {
+    it("is truthy when first arguent is even", function () {
+      expect(ps.even(0)).toBeTruthy();
+      expect(ps.even(2)).toBeTruthy();
+      expect(ps.even(4)).toBeTruthy();
+      expect(ps.even(10)).toBeTruthy();
+
+      // false expectations
+      expect(ps.even(1)).toBeFalsy();
+      expect(ps.even(3)).toBeFalsy();
+      expect(ps.even(5)).toBeFalsy();
+      expect(ps.even(11)).toBeFalsy();
+    });
+  });
 });
