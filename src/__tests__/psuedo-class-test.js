@@ -46,17 +46,32 @@ describe("pseudo-class", function () {
   });
 
   describe("even", function () {
-    it("is truthy when first arguent is even", function () {
-      expect(ps.even(0)).toBeTruthy();
-      expect(ps.even(2)).toBeTruthy();
-      expect(ps.even(4)).toBeTruthy();
-      expect(ps.even(10)).toBeTruthy();
+    it("is true when first arguent is even", function () {
+      expect(ps.even(0)).toBe(true);
+      expect(ps.even(2)).toBe(true);
+      expect(ps.even(4)).toBe(true);
+      expect(ps.even(10)).toBe(true);
 
       // false expectations
-      expect(ps.even(1)).toBeFalsy();
-      expect(ps.even(3)).toBeFalsy();
-      expect(ps.even(5)).toBeFalsy();
-      expect(ps.even(11)).toBeFalsy();
+      expect(ps.even(1)).toBe(false);
+      expect(ps.even(3)).toBe(false);
+      expect(ps.even(5)).toBe(false);
+      expect(ps.even(11)).toBe(false);
+    });
+  });
+
+  describe("odd", function () {
+    it("is true when first arguent is odd", function () {
+      expect(ps.odd(1)).toBe(true);
+      expect(ps.odd(3)).toBe(true);
+      expect(ps.odd(5)).toBe(true);
+      expect(ps.odd(11)).toBe(true);
+
+      // false expectations
+      expect(ps.odd(2)).toBe(false);
+      expect(ps.odd(4)).toBe(false);
+      expect(ps.odd(6)).toBe(false);
+      expect(ps.odd(10)).toBe(false);
     });
   });
 });

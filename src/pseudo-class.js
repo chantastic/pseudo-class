@@ -17,5 +17,13 @@ module.exports = {
   // for odd numbers
   even: function (i) {
     return (i % 2 === 0);
+  },
+
+  // Returns true for odd indexes.
+  // This is the opposite of :nth-child(odd)
+  // It seems too confusing to have a function called `odd` returns true
+  // for even numbers
+  odd: function (i) {
+    return (i % 2 !== 0);
   }
 };
