@@ -74,4 +74,20 @@ describe("pseudo-class", function () {
       expect(ps.odd(10)).toBe(false);
     });
   });
+
+  describe("nthChild", function () {
+    it("is true when first argument is equal to the second arugment - 1", function () {
+      expect(ps.nthChild(0, 1)).toBe(true);
+      expect(ps.nthChild(1, 2)).toBe(true);
+      expect(ps.nthChild(5, 6)).toBe(true);
+      expect(ps.nthChild(42, 43)).toBe(true);
+
+      // false expectations
+      expect(ps.nthChild(1, 1)).toBe(false);
+      expect(ps.nthChild(1, 0)).toBe(false);
+      expect(ps.nthChild(1, -1)).toBe(false);
+      expect(ps.nthChild(1, undefined)).toBe(false);
+      expect(ps.nthChild(1, null)).toBe(false);
+    });
+  });
 });

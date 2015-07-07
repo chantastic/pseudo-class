@@ -25,5 +25,9 @@ module.exports = {
   // for even numbers
   odd: function (i) {
     return (i % 2 !== 0);
+  },
+
+  nthChild: function (i, n) {
+    return (i === n - 1);
   }
 };
