@@ -90,4 +90,17 @@ describe("pseudo-class", function () {
       expect(ps.nthChild(1, null)).toBe(false);
     });
   });
+
+  describe("nthLastChild", function () {
+    it("is true when first argument is equal to the length of the second arugment - n", function () {
+      expect(ps.nthLastChild(0, [1, 2, 3], 3)).toBe(true);
+      expect(ps.nthLastChild(1, [1, 2, 3], 2)).toBe(true);
+      expect(ps.nthLastChild(2, [1, 2, 3], 1)).toBe(true);
+
+      // false expectations
+      expect(ps.nthLastChild(0, [1, 2, 3], 2)).toBe(false);
+      expect(ps.nthLastChild(2, [1, 2, 3], 2)).toBe(false);
+      expect(ps.nthLastChild(2, [1, 2, 3], 3)).toBe(false);
+    });
+  });
 });

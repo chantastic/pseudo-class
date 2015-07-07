@@ -29,5 +29,9 @@ module.exports = {
 
   nthChild: function (i, n) {
     return (i === n - 1);
+  },
+
+  nthLastChild: function (i, arr, n) {
+    return (i === arr.length - n);
   }
 };
