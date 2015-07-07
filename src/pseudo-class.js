@@ -33,5 +33,9 @@ module.exports = {
 
   nthLastChild: function (i, arr, n) {
     return (i === arr.length - n);
+  },
+
+  firstChildren: function (i, n) {
+    return (i < n);
   }
 };

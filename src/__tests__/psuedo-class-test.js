@@ -103,4 +103,17 @@ describe("pseudo-class", function () {
       expect(ps.nthLastChild(2, [1, 2, 3], 3)).toBe(false);
     });
   });
+
+  describe("firstChildren", function () {
+    it("returns true when first argument is less than the second argument", function () {
+      expect(ps.firstChildren(0, 3)).toBe(true);
+      expect(ps.firstChildren(1, 3)).toBe(true);
+      expect(ps.firstChildren(2, 3)).toBe(true);
+
+      // false expectations
+      expect(ps.firstChildren(3, 3)).toBe(false);
+      expect(ps.firstChildren(4, 3)).toBe(false);
+      expect(ps.firstChildren(5, 3)).toBe(false);
+    });
+  });
 });
