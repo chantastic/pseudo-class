@@ -3,7 +3,7 @@ jest.dontMock("../pseudo-class");
 
 var pc= require("../pseudo-class");
 
-describe("pc.udo-class", function () {
+describe("pseudo-class", function () {
   describe("firstChild", function () {
     it("returns true for the first index in a collection", function () {
       expect(pc.firstChild(0)).toBeTruthy();
@@ -122,6 +122,18 @@ describe("pc.udo-class", function () {
       expect(pc.firstChildren(3, 0)).toBe(true);
       expect(pc.firstChildren(3, 1)).toBe(true);
       expect(pc.firstChildren(3, 2)).toBe(true);
+    });
+  });
+
+  describe("lastChildren", function () {
+    it("returns true for items with a higher index than (arr - n - 1)", function () {
+      expect(pc.lastChildren(3, 0, [1, 2, 3])).toBe(true);
+      expect(pc.lastChildren(3, 1, [1, 2, 3])).toBe(true);
+      expect(pc.lastChildren(3, 2, [1, 2, 3])).toBe(true);
+
+      // false expectations
+      expect(pc.lastChildren(1, 1, [1, 2, 3])).toBe(false);
+      expect(pc.lastChildren(2, 0, [1, 2, 3])).toBe(false);
     });
   });
 });

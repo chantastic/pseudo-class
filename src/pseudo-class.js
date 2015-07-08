@@ -29,5 +29,9 @@ module.exports = {
 
   firstChildren: function (n, i) {
     return (i < n);
+  },
+
+  lastChildren: function (n, i, arr) {
+    return (i >= arr.length - n);
   }
 };

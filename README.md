@@ -47,7 +47,7 @@ This is a map of pseudo-classes to available functions.
 :nth-child(n)        nthChild(n, i)
 :nth-last-child(n)   nthLastChild(n, i, arr)
 
-:nth-child(-n+3)     firstChildren(3, i, arr)
+:nth-child(-n+3)     firstChildren(n, i, arr)
 ```
 
 ### Why not use the same names?
