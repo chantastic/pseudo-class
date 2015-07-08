@@ -119,9 +119,9 @@ describe("pseudo-class", function () {
       expect(pc.firstChildren(3, 2)).toBe(true);
 
       // false expectations
-      expect(pc.firstChildren(3, 0)).toBe(true);
-      expect(pc.firstChildren(3, 1)).toBe(true);
-      expect(pc.firstChildren(3, 2)).toBe(true);
+      expect(pc.firstChildren(1, 2)).toBe(false);
+      expect(pc.firstChildren(2, 3)).toBe(false);
+      expect(pc.firstChildren(10, 11)).toBe(false);
     });
   });
 
