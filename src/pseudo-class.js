@@ -33,5 +33,9 @@ module.exports = {
 
   lastChildren: function (n, i, arr) {
     return (i >= arr.length - n);
+  },
+
+  empty: function (arr) {
+    return (0 === arr.length);
   }
 };

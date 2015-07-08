@@ -136,4 +136,16 @@ describe("pseudo-class", function () {
       expect(pc.lastChildren(2, 0, [1, 2, 3])).toBe(false);
     });
   });
+
+  describe("empty", function () {
+    it("returns true for collections with no values", function () {
+      expect(pc.empty([])).toBe(true);
+
+      // false expectations
+      expect(pc.empty([1])).toBe(false);
+      expect(pc.empty([1, 2, 3])).toBe(false);
+      expect(pc.empty(["string"])).toBe(false);
+      expect(pc.empty([{ key: "value" }])).toBe(false);
+    });
+  });
 });

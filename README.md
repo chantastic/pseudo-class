@@ -35,6 +35,8 @@ from right to left. `_.extend` could serve the same purpose.*
 
 This is a map of pseudo-classes to available functions.
 
+##### item
+
 ```javascript
 :first-child         firstChild(i)
 :last-child          lastChild(i, arr)
@@ -47,7 +49,13 @@ This is a map of pseudo-classes to available functions.
 :nth-child(n)        nthChild(n, i)
 :nth-last-child(n)   nthLastChild(n, i, arr)
 
-:nth-child(-n+3)     firstChildren(n, i, arr)
+:nth-child(-n+3)     firstChildren(n, i)
+```
+
+##### collection
+
+```javascript
+:empty               empty(arr)
 ```
 
 ### Why not use the same names?
