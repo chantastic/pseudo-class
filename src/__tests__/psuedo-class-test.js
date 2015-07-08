@@ -1,119 +1,127 @@
 /* eslint-env node, jasmine */
 jest.dontMock("../pseudo-class");
 
-var ps = require("../pseudo-class");
+var pc= require("../pseudo-class");
 
-describe("pseudo-class", function () {
+describe("pc.udo-class", function () {
   describe("firstChild", function () {
-    it("is truthy if the first argument is 0", function () {
-      expect(ps.firstChild(0)).toBeTruthy();
+    it("returns true for the first index in a collection", function () {
+      expect(pc.firstChild(0)).toBeTruthy();
 
       // false expectations
-      expect(ps.firstChild(null)).toBeFalsy();
-      expect(ps.firstChild(undefined)).toBeFalsy();
-      expect(ps.firstChild(false)).toBeFalsy();
-      expect(ps.firstChild(1)).toBeFalsy();
-      expect(ps.firstChild(-1)).toBeFalsy();
+      expect(pc.firstChild(null)).toBeFalsy();
+      expect(pc.firstChild(undefined)).toBeFalsy();
+      expect(pc.firstChild(false)).toBeFalsy();
+      expect(pc.firstChild(1)).toBeFalsy();
+      expect(pc.firstChild(-1)).toBeFalsy();
     });
   });
 
   describe("lastChild", function () {
-    it("is truthy when first and second arguments are equal", function () {
-      expect(ps.lastChild(0, [1])).toBeTruthy();
-      expect(ps.lastChild(1, [1, 2])).toBeTruthy();
-      expect(ps.lastChild(2, [1, 2, 3])).toBeTruthy();
+    it("returns true for the last index in the collection", function () {
+      expect(pc.lastChild(0, [1])).toBeTruthy();
+      expect(pc.lastChild(1, [1, 2])).toBeTruthy();
+      expect(pc.lastChild(2, [1, 2, 3])).toBeTruthy();
 
       // false expectations
-      expect(ps.lastChild(0, [1, 2, 3])).toBeFalsy();
-      expect(ps.lastChild(1, [1, 2, 3])).toBeFalsy();
-      expect(ps.lastChild(-1, [1, 2, 3])).toBeFalsy();
-      expect(ps.lastChild("ham", [1, 2, 3])).toBeFalsy();
-      expect(ps.lastChild(0, [])).toBeFalsy();
+      expect(pc.lastChild(0, [1, 2, 3])).toBeFalsy();
+      expect(pc.lastChild(1, [1, 2, 3])).toBeFalsy();
+      expect(pc.lastChild(-1, [1, 2, 3])).toBeFalsy();
+      expect(pc.lastChild("ham", [1, 2, 3])).toBeFalsy();
+      expect(pc.lastChild(0, [])).toBeFalsy();
     });
   });
 
   describe("onlyChild", function () {
-    it("is truthy when 1 is equal to the first arguments length", function () {
-      expect(ps.onlyChild([1])).toBeTruthy();
-      expect(ps.onlyChild(["salmon"])).toBeTruthy();
-      expect(ps.onlyChild([{ name: "Michael" }])).toBeTruthy();
+    it("returns true for a collection with only one value", function () {
+      expect(pc.onlyChild([1])).toBeTruthy();
+      expect(pc.onlyChild(["salmon"])).toBeTruthy();
+      expect(pc.onlyChild([{ name: "Michael" }])).toBeTruthy();
 
       // false expectations
-      expect(ps.onlyChild([])).toBeFalsy();
-      expect(ps.onlyChild(["salmon", "trout"])).toBeFalsy();
-      expect(ps.onlyChild([{ name: "Michael" }, { name: "Nellie" }])).toBeFalsy();
+      expect(pc.onlyChild([])).toBeFalsy();
+      expect(pc.onlyChild(["salmon", "trout"])).toBeFalsy();
+      expect(pc.onlyChild([{ name: "Michael" }, { name: "Nellie" }])).toBeFalsy();
     });
   });
 
-  describe("even", function () {
-    it("is true when first arguent is even", function () {
-      expect(ps.even(0)).toBe(true);
-      expect(ps.even(2)).toBe(true);
-      expect(ps.even(4)).toBe(true);
-      expect(ps.even(10)).toBe(true);
+  describe("evenChildren", function () {
+    // evenChildren are determined by their relationship to other children in
+    // the collection, not index.
+    it("returns true for indexes of even items in a collection", function () {
+      expect(pc.evenChildren(1)).toBe(true);
+      expect(pc.evenChildren(3)).toBe(true);
+      expect(pc.evenChildren(5)).toBe(true);
+      expect(pc.evenChildren(11)).toBe(true);
 
       // false expectations
-      expect(ps.even(1)).toBe(false);
-      expect(ps.even(3)).toBe(false);
-      expect(ps.even(5)).toBe(false);
-      expect(ps.even(11)).toBe(false);
+      expect(pc.evenChildren(0)).toBe(false);
+      expect(pc.evenChildren(2)).toBe(false);
+      expect(pc.evenChildren(4)).toBe(false);
+      expect(pc.evenChildren(12)).toBe(false);
     });
   });
 
-  describe("odd", function () {
-    it("is true when first arguent is odd", function () {
-      expect(ps.odd(1)).toBe(true);
-      expect(ps.odd(3)).toBe(true);
-      expect(ps.odd(5)).toBe(true);
-      expect(ps.odd(11)).toBe(true);
+  describe("oddChildren", function () {
+    // everChildren are determined by their relationship to other children in
+    // the collection, not index.
+    it("returns true for indexes of odd items in a collection", function () {
+      expect(pc.oddChildren(0)).toBe(true);
+      expect(pc.oddChildren(2)).toBe(true);
+      expect(pc.oddChildren(4)).toBe(true);
+      expect(pc.oddChildren(10)).toBe(true);
 
       // false expectations
-      expect(ps.odd(2)).toBe(false);
-      expect(ps.odd(4)).toBe(false);
-      expect(ps.odd(6)).toBe(false);
-      expect(ps.odd(10)).toBe(false);
+      expect(pc.oddChildren(1)).toBe(false);
+      expect(pc.oddChildren(3)).toBe(false);
+      expect(pc.oddChildren(5)).toBe(false);
+      expect(pc.oddChildren(11)).toBe(false);
     });
   });
 
   describe("nthChild", function () {
-    it("is true when first argument is equal to the second arugment - 1", function () {
-      expect(ps.nthChild(0, 1)).toBe(true);
-      expect(ps.nthChild(1, 2)).toBe(true);
-      expect(ps.nthChild(5, 6)).toBe(true);
-      expect(ps.nthChild(42, 43)).toBe(true);
+    it("returns true for the nth item in a collection", function () {
+      expect(pc.nthChild(1, 0)).toBe(true);
+      expect(pc.nthChild(2, 1)).toBe(true);
+      expect(pc.nthChild(6, 5)).toBe(true);
+      expect(pc.nthChild(43, 42)).toBe(true);
 
       // false expectations
-      expect(ps.nthChild(1, 1)).toBe(false);
-      expect(ps.nthChild(1, 0)).toBe(false);
-      expect(ps.nthChild(1, -1)).toBe(false);
-      expect(ps.nthChild(1, undefined)).toBe(false);
-      expect(ps.nthChild(1, null)).toBe(false);
+      expect(pc.nthChild(0, 0)).toBe(false);
+      expect(pc.nthChild(1, 1)).toBe(false);
+      expect(pc.nthChild(0, 1)).toBe(false);
+      expect(pc.nthChild(-1, 1)).toBe(false);
+      expect(pc.nthChild(undefined, 1)).toBe(false);
+      expect(pc.nthChild(null, 1)).toBe(false);
     });
   });
 
   describe("nthLastChild", function () {
-    it("is true when first argument is equal to the length of the second arugment - n", function () {
-      expect(ps.nthLastChild(0, [1, 2, 3], 3)).toBe(true);
-      expect(ps.nthLastChild(1, [1, 2, 3], 2)).toBe(true);
-      expect(ps.nthLastChild(2, [1, 2, 3], 1)).toBe(true);
+    it("returns true when nth-last item in a collection", function () {
+      expect(pc.nthLastChild(1, 2, [1, 2, 3])).toBe(true);
+      expect(pc.nthLastChild(2, 1, [1, 2, 3])).toBe(true);
+      expect(pc.nthLastChild(3, 0, [1, 2, 3])).toBe(true);
 
       // false expectations
-      expect(ps.nthLastChild(0, [1, 2, 3], 2)).toBe(false);
-      expect(ps.nthLastChild(2, [1, 2, 3], 2)).toBe(false);
-      expect(ps.nthLastChild(2, [1, 2, 3], 3)).toBe(false);
+      expect(pc.nthLastChild(0, 0, [1, 2, 3])).toBe(false);
+      expect(pc.nthLastChild(0, 1, [1, 2, 3])).toBe(false);
+      expect(pc.nthLastChild(0, 2, [1, 2, 3])).toBe(false);
+      expect(pc.nthLastChild(0, 0, [1, 2, 3])).toBe(false);
+      expect(pc.nthLastChild(0, 1, [1, 2, 3])).toBe(false);
+      expect(pc.nthLastChild(0, 2, [1, 2, 3])).toBe(false);
     });
   });
 
   describe("firstChildren", function () {
-    it("returns true when first argument is less than the second argument", function () {
-      expect(ps.firstChildren(0, 3)).toBe(true);
-      expect(ps.firstChildren(1, 3)).toBe(true);
-      expect(ps.firstChildren(2, 3)).toBe(true);
+    it("returns true for items with a lower index than n", function () {
+      expect(pc.firstChildren(3, 0)).toBe(true);
+      expect(pc.firstChildren(3, 1)).toBe(true);
+      expect(pc.firstChildren(3, 2)).toBe(true);
 
       // false expectations
-      expect(ps.firstChildren(3, 3)).toBe(false);
-      expect(ps.firstChildren(4, 3)).toBe(false);
-      expect(ps.firstChildren(5, 3)).toBe(false);
+      expect(pc.firstChildren(3, 0)).toBe(true);
+      expect(pc.firstChildren(3, 1)).toBe(true);
+      expect(pc.firstChildren(3, 2)).toBe(true);
     });
   });
 });

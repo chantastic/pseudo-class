@@ -11,31 +11,23 @@ module.exports = {
     return (1 === arr.length);
   },
 
-  // Returns truthy for even indexes.
-  // This is the opposite of :nth-child(even)
-  // It seems too confusing to have a function called `even` that returns truthy
-  // for odd numbers
-  even: function (i) {
-    return (i % 2 === 0);
-  },
-
-  // Returns true for odd indexes.
-  // This is the opposite of :nth-child(odd)
-  // It seems too confusing to have a function called `odd` returns true
-  // for even numbers
-  odd: function (i) {
+  evenChildren: function (i) {
     return (i % 2 !== 0);
   },
 
-  nthChild: function (i, n) {
+  oddChildren: function (i) {
+    return (i % 2 === 0);
+  },
+
+  nthChild: function (n, i) {
     return (i === n - 1);
   },
 
-  nthLastChild: function (i, arr, n) {
+  nthLastChild: function (n, i, arr) {
     return (i === arr.length - n);
   },
 
-  firstChildren: function (i, n) {
+  firstChildren: function (n, i) {
     return (i < n);
   }
 };

@@ -2,23 +2,59 @@
 
 *WIP*
 
-It's likely that this shouldn't be a library. I'm not sure it provides any real
-value over just writing the equations out yourself but it may provide your team
-with a little comfort.
+A small set of functions for pseudo-class-like logic logic in JavaScript. I'm
+using it with React and inline-styles in mind. I don't see why you couldn't use
+it elsewhere.
 
-It will provide conveniences for the following common psuedo-classes:
+## Why?
+
+These are pretty simple expressions. I see this being more useful as a resource
+than a library. Cheat-sheets are boring. This is living.
+
+## Usage in React
+
+In React render function, it can be used like so:
 
 ```javascript
-:first-child       i === 0
-:last-child        i === arr.length - 1
-
-:only-child        1 === arr.length
-
-:nth-child(even)   i % 2
-:nth-child(odd)    !(i % 2)
-
-:nth-child(n)      i === n - 1
-:nth-last-child(n) i === arr.length - n
-
-:nth-child(-n+3)   i < 3
+{this.props.item.map((item, i, arr) => {
+  return (
+    <li style={Object.assign{
+     {},
+     lastChild(i,arr): { backgroundColor: "#eee" }
+    }}>
+      {item}
+    </li>
+  );
+})};
 ```
+
+*If you're not familiar with `Object.assign`, it's just a way of merging objects
+from right to left. `_.extend` could serve the same purpose.*
+
+## Capabilities
+
+This is a map of pseudo-classes to available functions.
+
+```javascript
+:first-child         firstChild(i)
+:last-child          lastChild(i, arr)
+
+:only-child          onlyChild(i, arr)
+
+:nth-child(even)     evenChildren(i)
+:nth-child(odd)      oddChildren(i)
+
+:nth-child(n)        nthChild(n, i)
+:nth-last-child(n)   nthLastChild(n, i, arr)
+
+:nth-child(-n+3)     firstChildren(3, i, arr)
+```
+
+### Why not use the same names?
+
+`:nth-child` is a pretty overloaded selector. I really don't want to get into
+parsing.
+
+### Is this exhaustive?
+
+Nope. I've added those most common me. Happy to add more if useful.
