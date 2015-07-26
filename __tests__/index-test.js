@@ -1,7 +1,8 @@
 /* eslint-env node, jasmine */
-jest.dontMock("../pseudo-class");
+/* global jest */
+jest.dontMock("../index.js");
 
-var pc= require("../pseudo-class");
+var pc= require("../index.js");
 
 describe("pseudo-class", function () {
   describe("firstChild", function () {
