@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/chantastic/pseudo-class.svg?style=svg)](https://circleci.com/gh/chantastic/pseudo-class)
+
 ## Psuedo
 
 *WIP*
