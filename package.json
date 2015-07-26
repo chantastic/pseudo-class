@@ -20,7 +20,7 @@
   "homepage": "https://github.com/chantastic/pseudo",
   "devDependencies": {
     "eslint": "^0.24.1",
-    "jest": "^0.1.40",
+    "jest-cli": "^0.4.17",
     "webpack": "^1.10.5"
   }
 }
