@@ -1,0 +1,10 @@
+{
+  "env": {
+    "node": true,
+    "jasmine": true,
+  },
+  "rules": {
+    "camelcase": [2, {"properties": "never"}],
+    "comma-dangle": [2, "always-multiline"],
+  }
+}

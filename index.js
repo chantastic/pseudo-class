@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = {
   firstChild: function (i) {
     return (i === 0);
@@ -8,7 +10,7 @@ module.exports = {
   },
 
   onlyChild: function (arr) {
-    return (1 === arr.length);
+    return (arr.length === 1);
   },
 
   evenChildren: function (i) {
@@ -36,6 +38,6 @@ module.exports = {
   },
 
   empty: function (arr) {
-    return (0 === arr.length);
-  }
+    return (arr.length === 0);
+  },
 };
